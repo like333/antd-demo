@@ -1,5 +1,9 @@
 <template>
-  <div>User $route.params.id</div>
+  <div>
+    <div>User {{ $route.params.id }}</div>
+    <h1>标题</h1>
+  </div>
+ 
 </template>
 
 <script>
