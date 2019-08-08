@@ -1,14 +1,30 @@
 import Vue from "vue"
 import VueRouter from 'vue-router'
-import User from './components/User'
+import Home from './components/Home'
+import Login from './components/Login'
+
 Vue.use(VueRouter)
 
-export default new VueRouter({
+const routes = [
+   {
+       path:'/login',
+       component:Login
+   },
+   
+    {
+        path: '/home',
+        component: Home,
+        children:[
+            // { path:'',component:'' },
+        ]
+    },
+    
+]
+    
+
+
+const router = new VueRouter({
     routes
 })
 
-const routes = [
-    { path:'/user/:id', component: User }
-]
-
-// export default router
+export default router

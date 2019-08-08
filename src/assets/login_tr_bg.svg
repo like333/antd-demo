@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="61px" height="64px" viewBox="0 0 61 64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 54.1 (76490) - https://sketchapp.com -->
+    <title>Group 10</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Templates-模板页面" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.799999952">
+        <g id="账户密码登录" transform="translate(-1098.000000, -82.000000)">
+            <g id="Group-10" transform="translate(1131.100635, 109.659317) rotate(-11.000000) translate(-1131.100635, -109.659317) translate(1103.600635, 77.659317)">
+                <ellipse id="Oval-7" stroke="#CFDAE6" stroke-width="0.941176471" cx="43.8135593" cy="32" rx="11.1864407" ry="11.2941176"></ellipse>
+                <g id="Group-12" transform="translate(34.596774, 23.111111)" fill="#BACAD9">
+                    <ellipse id="Oval-7" opacity="0.45" cx="9.18534718" cy="8.88888889" rx="8.47457627" ry="8.55614973"></ellipse>
+                    <path d="M9.18534718,17.4450386 C13.8657264,17.4450386 17.6599235,13.6143199 17.6599235,8.88888889 C17.6599235,4.16345787 13.8657264,0.332739156 9.18534718,0.332739156 L9.18534718,17.4450386 Z" id="Oval-7"></path>
+                </g>
+                <path d="M34.6597385,24.809694 L5.71666084,4.76878945" id="Path-2" stroke="#CFDAE6" stroke-width="0.941176471"></path>
+                <ellipse id="Oval" stroke="#CFDAE6" stroke-width="0.941176471" cx="3.26271186" cy="3.29411765" rx="3.26271186" ry="3.29411765"></ellipse>
+                <ellipse id="Oval-Copy" fill="#F7E1AD" cx="2.79661017" cy="61.1764706" rx="2.79661017" ry="2.82352941"></ellipse>
+                <path d="M34.6312443,39.2922712 L5.06366663,59.785082" id="Path-10" stroke="#CFDAE6" stroke-width="0.941176471"></path>
+            </g>
+        </g>
+    </g>
+</svg>

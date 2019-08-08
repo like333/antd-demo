@@ -1,5 +1,9 @@
+<!--BasicForm.vuw 基础表单-->
 <template>
-  <div>User {{ $route.params.id }}</div> 
+  <div>
+   <h2>User {{ $route.params.id }}</h2> 
+   <router-view></router-view>
+  </div> 
 </template>
 
 <script>
