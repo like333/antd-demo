@@ -3,7 +3,6 @@ import router from './router.js'
 import Antd from 'ant-design-vue'
 import 'ant-design-vue/dist/antd.css'
 import App from './App.vue'
-import VueRouter from 'vue-router';
 
 Vue.use(Antd)
 
@@ -15,7 +14,11 @@ router.beforeEach((to, from, next) => {
   }
   let user = JSON.parse(sessionStorage.getItem('user'))
   if (!user && to.path != '/login') {
-    next({ path: '/login' })
+    if(to.path == '/register'){
+      next()
+    }else{
+      next({ path: '/login' })
+    }
   } else {
     next()
   }

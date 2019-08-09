@@ -7,23 +7,46 @@
       @breakpoint="onBreakpoint"
     >
       <div class="logo" />
-      <a-menu theme="dark" mode="inline" :defaultSelectedKeys="['4']">
+      <a-menu theme="dark" mode="inline" :defaultSelectedKeys="['1']">
         <a-menu-item key="1">
-          <a-icon type="user" />
-          <span class="nav-text">nav 1</span>
+          <a-icon type="desktop" />
+          <span class="nav-text">工作台</span>
         </a-menu-item>
-        <a-menu-item key="2">
-          <a-icon type="video-camera" />
-          <span class="nav-text">nav 2</span>
+        <a-sub-menu key="sub1">
+          <span slot="title"> <a-icon type="file" /><span>表单</span></span>
+          <a-menu-item key="2">基础表单</a-menu-item>
+          <a-menu-item key="3">分布表单</a-menu-item>
+          <a-menu-item key="4">高级表单</a-menu-item>
+        </a-sub-menu>
+         <a-sub-menu key="sub2">
+          <span slot="title"> <a-icon type="user" /><span>bars</span></span>
+          <a-menu-item key="5">标准列表</a-menu-item>
+          <a-menu-item key="6">带筛选列表</a-menu-item>
+          <a-menu-item key="7">筛选卡片列表</a-menu-item>
+          <a-menu-item key="8">卡片列表</a-menu-item>
+          <a-menu-item key="9">搜索列表</a-menu-item>
+        </a-sub-menu>
+         <a-sub-menu key="sub3">
+          <span slot="title"> <a-icon type="profile" /><span>详情页</span></span>
+          <a-menu-item key="10">基础详情页</a-menu-item>
+          <a-menu-item key="11">高级详情页</a-menu-item>
+        </a-sub-menu>
+       
+           <a-menu-item key="12">
+          <a-icon type="table" />
+          <span class="nav-text">表格</span>
         </a-menu-item>
-        <a-menu-item key="3">
-          <a-icon type="upload" />
-          <span class="nav-text">nav 3</span>
+       
+       
+        <a-menu-item key="13">
+          <a-icon type="line-chart" />
+          <span class="nav-text">分析页</span>
         </a-menu-item>
-        <a-menu-item key="4">
-          <a-icon type="user" />
-          <span class="nav-text">nav 4</span>
+        <a-menu-item key="14">
+          <a-icon type="fund" />
+          <span class="nav-text">监控页</span>
         </a-menu-item>
+        
       </a-menu>
     </a-layout-sider>
     <a-layout>

@@ -1,6 +1,6 @@
-<!-- Analysis 分析页 -->
+<!-- filterCardList 筛选卡片列表 -->
 <template>
-    <h2>分析页</h2>
+    <h2>筛选卡片列表</h2>
 </template>
 
 <script>

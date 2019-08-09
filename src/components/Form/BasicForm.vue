@@ -1,4 +1,4 @@
-<!--BasicForm.vuw 基础表单-->
+<!--BasicForm.vue 基础表单-->
 <template>
   <div>
    <h2>User {{ $route.params.id }}</h2> 

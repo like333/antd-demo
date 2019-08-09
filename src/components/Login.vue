@@ -87,7 +87,7 @@
               </a-row>
             </a-col>
             <a-col>
-              <a>注册账户</a>
+             <router-link to="register">注册账户</router-link>
             </a-col>
           </a-row>
         </div>

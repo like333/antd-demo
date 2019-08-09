@@ -1,6 +1,6 @@
-<!-- Table.vue 表格 -->
+<!-- cardList 筛选列表 -->
 <template>
-    <h2>表格</h2>
+    <h2>卡片列表</h2>
 </template>
 
 <script>
@@ -12,3 +12,5 @@ export default {
 <style lang="sass">
 
 </style>
+
+
