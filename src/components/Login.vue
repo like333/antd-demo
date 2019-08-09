@@ -11,28 +11,28 @@
           <a-tabs defaultActiveKey="1" @change="callback">
             <a-tab-pane tab="账户密码登录" key="1">
               <div class="components-input">
-                <a-input size="large" placeholder="账户" v-model="userName" ref="userNameInput">
+                <a-input size="large" placeholder="账户" @change="onChange" v-model="userName" ref="userNameInput">
                   <a-icon slot="prefix" type="user" />
-                  <a-icon v-if="userName" slot="suffix" type="close-circle" @click="emitEmpty" />
+                  <a-icon v-if="userName" slot="suffix" type="close-circle" @click="userNameEmpty" />
                 </a-input>
                 <a-input size="large" placeholder="密码" type="password" v-model="passWord" ref="passWordInput">
                   <a-icon slot="prefix" type="lock" />
-                  <a-icon v-if="passWord" slot="suffix" type="close-circle" @click="emitEmpty" />
+                  <a-icon v-if="passWord" slot="suffix" type="close-circle" @click="pwdEmpty" />
                 </a-input>
               </div>
             </a-tab-pane>
 
             <a-tab-pane tab="手机号登录" forceRender key="2">
               <div class="components-input">
-                <a-input size="large" placeholder="手机号" maxLength="11" v-model="userName" ref="userNameInput">
+                <a-input size="large" placeholder="手机号" maxLength="11" v-model="phoneNum" ref="phoneNumInput">
                   <a-icon slot="prefix" type="tablet" />
-                  <a-icon v-if="userName" slot="suffix" type="close-circle" @click="emitEmpty" />
+                  <a-icon v-if="phoneNum" slot="suffix" type="close-circle" @click="phoneNumEmpty" />
                 </a-input>
                  <a-input-group>
                   <a-col :span="17">
-                    <a-input size="large" placeholder="验证码" v-model="passWord" ref="passWordInput">
+                    <a-input size="large" placeholder="验证码" v-model="verCode" ref="verCodeInput">
                       <a-icon slot="prefix" type="mail" />
-                      <a-icon v-if="passWord" slot="suffix" type="close-circle" @click="emitEmpty" />
+                      <a-icon v-if="verCode" slot="suffix" type="close-circle" @click="verCodeEmpty" />
                     </a-input>
                   </a-col>
                   <a-col :span="7">
@@ -85,7 +85,9 @@ export default {
     return {
       logoSrc: headImg,
       userName: "",
-      passWord: ""
+      passWord: "",
+      phoneNum:"",
+      verCode:"",
     };
   },
   methods: {
@@ -93,14 +95,24 @@ export default {
       console.log(key);
     },
     // 清空用户名
-    emitEmpty() {
-      this.$refs.userNameInput.focus();
-      this.userName = "";
+    userNameEmpty() {
+      this.$refs.userNameInput.focus()
+      this.userName = ''  
     },
     // 清空密码
-    psdEmpty() {
+    pwdEmpty() {
       this.$refs.passWordInput.focus();
       this.passWord = "";
+    },
+    // 清空手机号
+    phoneNumEmpty() {
+      this.$refs.phoneNumInput.focus();
+      this.phoneNum = "";
+    },
+    // 清空验证码
+    verCodeEmpty() {
+      this.$refs.verCodeInput.focus();
+      this.verCode = "";
     },
     // 点击自动登录
     onChange(e) {
@@ -143,7 +155,13 @@ export default {
           line-height: 22px;
         }
         .components-input {
-          .anticon-close-circle {
+          .ant-input-affix-wrapper {
+            margin-bottom: 20px;
+            .anticon {
+              color: #ccc;
+            }
+          }
+           .anticon-close-circle {
             cursor: pointer;
             color: #ccc;
             transition: color 0.3s;
@@ -153,12 +171,6 @@ export default {
             }
             &:active {
               color: #666;
-            }
-          }
-          .ant-input-affix-wrapper {
-            margin-bottom: 20px;
-            .anticon {
-              opacity: 0.25;
             }
           }
         }
