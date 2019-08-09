@@ -11,28 +11,47 @@
           <a-tabs defaultActiveKey="1" @change="callback">
             <a-tab-pane tab="账户密码登录" key="1">
               <div class="components-input">
-                <a-input size="large" placeholder="账户" @change="onChange" v-model="userName" ref="userNameInput">
+                <a-input size="large" placeholder="账户" v-model="userName" ref="userNameInput">
                   <a-icon slot="prefix" type="user" />
                   <a-icon v-if="userName" slot="suffix" type="close-circle" @click="userNameEmpty" />
                 </a-input>
-                <a-input size="large" placeholder="密码" type="password" v-model="passWord" ref="passWordInput">
+                <div v-if="errorMsg.userName" class="errorMsg">{{errorMsg.userName}}</div>
+                <a-input
+                  size="large"
+                  placeholder="密码"
+                  type="password"
+                  v-model="passWord"
+                  ref="passWordInput"
+                >
                   <a-icon slot="prefix" type="lock" />
                   <a-icon v-if="passWord" slot="suffix" type="close-circle" @click="pwdEmpty" />
                 </a-input>
+                <div v-if="errorMsg.psw" class="errorMsg">{{errorMsg.psw}}</div>
               </div>
             </a-tab-pane>
 
             <a-tab-pane tab="手机号登录" forceRender key="2">
               <div class="components-input">
-                <a-input size="large" placeholder="手机号" maxLength="11" v-model="phoneNum" ref="phoneNumInput">
+                <a-input
+                  size="large"
+                  placeholder="手机号"
+                  maxlength="11"
+                  v-model="phoneNum"
+                  ref="phoneNumInput"
+                >
                   <a-icon slot="prefix" type="tablet" />
                   <a-icon v-if="phoneNum" slot="suffix" type="close-circle" @click="phoneNumEmpty" />
                 </a-input>
-                 <a-input-group>
+                <a-input-group>
                   <a-col :span="17">
                     <a-input size="large" placeholder="验证码" v-model="verCode" ref="verCodeInput">
                       <a-icon slot="prefix" type="mail" />
-                      <a-icon v-if="verCode" slot="suffix" type="close-circle" @click="verCodeEmpty" />
+                      <a-icon
+                        v-if="verCode"
+                        slot="suffix"
+                        type="close-circle"
+                        @click="verCodeEmpty"
+                      />
                     </a-input>
                   </a-col>
                   <a-col :span="7">
@@ -53,17 +72,19 @@
           </a-row>
 
           <div class="login-btn-box">
-            <a-button type="primary" size="large" block>登录</a-button>
+            <a-button type="primary" @click="loginIn" size="large" block>登录</a-button>
           </div>
 
           <a-row type="flex" justify="space-between">
-            <a-col>
-              <p class="others-methods">
-                其他登录方式
-                <a-icon type="alipay-circle" />
-                <a-icon type="taobao-circle" />
-                <a-icon type="weibo-circle" />
-              </p>
+            <a-col :span="15">
+              <a-row class="others-methods" align="middle">
+                <a-col :span="10">其他登录方式</a-col>
+                <a-col :span="14">
+                  <a-icon type="alipay-circle" />
+                  <a-icon type="taobao-circle" />
+                  <a-icon type="weibo-circle" />
+                </a-col>
+              </a-row>
             </a-col>
             <a-col>
               <a>注册账户</a>
@@ -86,18 +107,35 @@ export default {
       logoSrc: headImg,
       userName: "",
       passWord: "",
-      phoneNum:"",
-      verCode:"",
+      phoneNum: "",
+      verCode: "",
+      errorMsg: {
+        userName: "",
+        psw: ""
+      },
+      tabKey: 1
     };
+  },
+  watch: {
+    userName: function() {
+      if (this.userName) {
+        this.errorMsg.userName = "";
+      }
+    },
+    passWord: function() {
+      if (this.passWord) {
+        this.errorMsg.psw = "";
+      }
+    }
   },
   methods: {
     callback(key) {
-      console.log(key);
+      this.tabKey = key;
     },
     // 清空用户名
     userNameEmpty() {
-      this.$refs.userNameInput.focus()
-      this.userName = ''  
+      this.$refs.userNameInput.focus();
+      this.userName = "";
     },
     // 清空密码
     pwdEmpty() {
@@ -117,6 +155,23 @@ export default {
     // 点击自动登录
     onChange(e) {
       console.log(`checked = ${e.target.checked}`);
+    },
+    // 点击登录
+    loginIn() {
+      if (this.tabKey == 1) {
+        
+        if (this.userName == "") {
+          this.errorMsg.userName = "请输入用户名";
+        } else if (this.passWord == "") {
+          this.errorMsg.psw = "请输入密码";
+        } else {
+          var user = { userName:this.userName, psw:this.passWord }
+          sessionStorage.setItem('user', JSON.stringify(user));
+          this.$router.push({ path: '/' });
+        }
+      }
+      if (this.tabKey == 2) {
+      }
     }
   }
 };
@@ -124,7 +179,6 @@ export default {
 
 
 <style lang="less">
-
 .login-container {
   min-width: 1120px;
   height: 100%;
@@ -154,6 +208,12 @@ export default {
           color: rgba(0, 0, 0, 0.45);
           line-height: 22px;
         }
+        .errorMsg {
+          color: red;
+          margin-top: -10px;
+          margin-bottom: 10px;
+          transition: 0.3s;
+        }
         .components-input {
           .ant-input-affix-wrapper {
             margin-bottom: 20px;
@@ -161,7 +221,7 @@ export default {
               color: #ccc;
             }
           }
-           .anticon-close-circle {
+          .anticon-close-circle {
             cursor: pointer;
             color: #ccc;
             transition: color 0.3s;
@@ -193,7 +253,7 @@ export default {
         .others-methods {
           .anticon {
             cursor: pointer;
-            padding-left: 16px;
+            padding-left: 10px;
             color: rgba(0, 0, 0, 0.2);
             font-size: 24px;
             &:hover {
@@ -201,9 +261,9 @@ export default {
             }
           }
         }
-        .getVerCode{
+        .getVerCode {
           font-size: 14px;
-          padding:0 17px;
+          padding: 0 17px;
         }
       }
     }
