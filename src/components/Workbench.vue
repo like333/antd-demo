@@ -1,4 +1,5 @@
-<!-- Workbench 工作台 -->
+
+<!-- WorkBench 工作台 -->
 <template>
     <h2>工作台</h2>
 </template>

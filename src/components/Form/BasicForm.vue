@@ -1,8 +1,7 @@
 <!--BasicForm.vue 基础表单-->
 <template>
   <div>
-   <h2>User {{ $route.params.id }}</h2> 
-   <router-view></router-view>
+   <h2>基础表单</h2> 
   </div> 
 </template>
 

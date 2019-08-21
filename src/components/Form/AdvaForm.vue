@@ -1,6 +1,6 @@
 <!--AdvaForm 高级表单-->
 <template>
-    <h3> User Posts</h3>
+    <h3> 高级表单</h3>
 </template>
 <script>
 export default {
