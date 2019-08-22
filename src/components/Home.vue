@@ -83,6 +83,7 @@ export default {
     },
     menuClick(item, key, keyPath) {
       this.selKey = item.key
+      console.log("key:",item.key)
       switch (item.key) {
         case "1":
           this.$router.push("workBench");
@@ -130,7 +131,7 @@ export default {
     }
   },
   mounted:function(){
-    console.log(this.selKey)
+   this.selKey = '1'
   },
 };
 </script>
