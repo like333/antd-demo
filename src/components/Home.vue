@@ -144,7 +144,7 @@
         </a-row>
       </a-layout-header>
       <a-layout-content>
-        <div :style="{ padding: '24px', background: '#fff', minHeight: '360px' }">
+        <div :style="{ background: '#f0f2f5', minHeight: '360px' }">
           <router-view></router-view>
         </div>
       </a-layout-content>
