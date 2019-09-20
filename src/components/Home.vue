@@ -52,7 +52,7 @@
       </a-menu>
     </a-layout-sider>
     <a-layout>
-      <a-layout-header :style="{ background: '#fff', padding: 0 }">
+      <a-layout-header :style="{ background: '#fff', padding: 0, boxShadow:'0px 0px 5px rgba(0,0,0,.1)',zIndex:2}">
         <a-row type="flex" justify="space-between" align="middle">
           <a-col>
             <a-icon
@@ -71,16 +71,15 @@
                 <a-icon type="question-circle" />
               </span>
             </a-tooltip>
-            <a-dropdown placement="bottomRight" :trigger="['click']">
+            <a-dropdown v-model="visible" placement="bottomRight" :trigger="['click']">
               <span class="tool-item">
                 <a-badge :count="9" :overflowCount="99" :offset="[5,-3]">
                   <a-icon type="bell" />
                 </a-badge>
               </span>
               <a-menu slot="overlay" >
-                <a-menu-item>
-                <a-tabs defaultActiveKey="1" @change="callback">
-                  <a-tab-pane tab="通知" key="1">
+                <a-tabs defaultActiveKey="1" style="width:336px;" >
+                  <a-tab-pane tab="notice" key="1">
                     <!-- <a-list itemLayout="horizontal" :dataSource="notification">
                       <a-list-item slot="renderItem" slot-scope="item, index">
                         <a-list-item-meta :description="item.date">
@@ -88,10 +87,10 @@
                           <a-avatar slot="avatar" src="#" />
                         </a-list-item-meta>
                       </a-list-item>
-                    </a-list> -->
+                    </a-list>-->
                     Content of Tab Pane 1
                   </a-tab-pane>
-                  <a-tab-pane tab="消息" key="2" >
+                  <a-tab-pane tab="message" key="2">
                     <!-- <a-list itemLayout="horizontal" :dataSource="data">
                       <a-list-item slot="renderItem" slot-scope="item, index">
                         <a-list-item-meta :description="{{item.description}}">
@@ -99,10 +98,10 @@
                           <a-avatar slot="avatar" src="#" />
                         </a-list-item-meta>
                       </a-list-item>
-                    </a-list> -->
+                    </a-list>-->
                     Content of Tab Pane 1
                   </a-tab-pane>
-                 <a-tab-pane tab="待办" key="3" >
+                  <a-tab-pane tab="todoList" key="3">
                     <!-- <a-list itemLayout="horizontal" :dataSource="data">
                       <a-list-item slot="renderItem" slot-scope="item, index">
                         <a-list-item-meta :description="{{item.description}}">
@@ -110,11 +109,10 @@
                           <a-avatar slot="avatar" src="#" />
                         </a-list-item-meta>
                       </a-list-item>
-                    </a-list> -->
+                    </a-list>-->
                     Content of Tab Pane 3
                   </a-tab-pane>
                 </a-tabs>
-                </a-menu-item>
               </a-menu>
             </a-dropdown>
             <a-dropdown placement="bottomRight">
@@ -145,7 +143,7 @@
           </a-col>
         </a-row>
       </a-layout-header>
-      <a-layout-content :style="{ margin: '24px 16px 0' }">
+      <a-layout-content>
         <div :style="{ padding: '24px', background: '#fff', minHeight: '360px' }">
           <router-view></router-view>
         </div>
@@ -232,10 +230,17 @@ export default {
     return {
       selKey: "",
       collapsed: false,
-      data:data,
+      data: data,
+      visible: false
     };
   },
   methods: {
+    // handleMenuClick(e) {
+    //   console.log(e.key);
+    //   if (e.key === "2") {
+    //     this.visible = false;
+    //   }
+    // },
     onCollapse(collapsed, type) {
       console.log(collapsed, type);
     },
@@ -310,6 +315,7 @@ export default {
 .ant-layout-sider {
   height: 100vh;
 }
+
 #components-layout-demo-responsive .trigger {
   font-size: 18px;
   line-height: 64px;
